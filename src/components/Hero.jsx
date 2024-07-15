@@ -19,49 +19,41 @@ const Hero = () => {
   }, [cards.length]);
 
   return (
-    <section className="bg-gradient-to-b from-gray-700 to-black py-8 flex flex-col lg:flex-row items-center relative overflow-hidden">
-      <div className="container mx-auto text-center lg:text-left text-white z-10 px-4 lg:px-0">
-        <h1 className="text-3xl lg:text-5xl font-bold mb-4"></h1>
-        <p className="text-lg leading-relaxed mx-auto max-w-2xl mb-6">
-          En FixLat Security, somos expertos en ciberseguridad, dedicados a proteger los activos digitales de nuestros clientes con soluciones avanzadas. Nuestro equipo de especialistas utiliza las últimas tecnologías en machine learning y análisis de datos para anticiparse a las amenazas, garantizando la integridad y confidencialidad de la información.
-        </p>
-        <p className="text-lg leading-relaxed mx-auto max-w-2xl mb-6">
-          Ofrecemos medidas de protección personalizadas, asegurando un entorno digital seguro y eficiente. Nuestro compromiso con la innovación y la experiencia técnica nos permite proporcionar servicios de alta calidad que se adaptan a las necesidades específicas de cada negocio.
-        </p>
-        <p className="text-lg leading-relaxed mx-auto max-w-2xl mb-6">
-          Confíe en FixLat Security para mantener su empresa segura en el mundo digital.
-        </p>
+    <div className="bg-gradient-to-b from-gray-700 to-black py-8 lg:py-16 flex flex-col lg:flex-row items-center relative overflow-hidden">
+      {/* Columnas de texto */}
+      <div className="container text-center lg:text-left text-white z-10 px-4 lg:px-0 lg:w-2/3 lg:flex lg:flex-col lg:justify-center">
+        <div className="lg:w-2/3 mx-auto">
+          <h1 className="text-3xl lg:text-5xl font-bold mb-4">FixLat Security</h1>
+          <p className="text-lg leading-relaxed mx-auto max-w-2xl mb-6">
+            En FixLat Security, somos expertos en ciberseguridad, dedicados a proteger los activos digitales de nuestros clientes con soluciones avanzadas. Nuestro equipo de especialistas utiliza las últimas tecnologías en machine learning y análisis de datos para anticiparse a las amenazas, garantizando la integridad y confidencialidad de la información.
+          </p>
+          <p className="text-lg leading-relaxed mx-auto max-w-2xl mb-6">
+            Ofrecemos medidas de protección personalizadas, asegurando un entorno digital seguro y eficiente. Nuestro compromiso con la innovación y la experiencia técnica nos permite proporcionar servicios de alta calidad que se adaptan a las necesidades específicas de cada negocio.
+          </p>
+          <p className="text-lg leading-relaxed mx-auto max-w-2xl mb-6">
+            Confíe en FixLat Security para mantener su empresa segura en el mundo digital.
+          </p>
+        </div>
       </div>
-      <div className="w-full lg:w-1/2 flex justify-center items-center z-10 relative mt-8 lg:mt-0">
-        {cards.map((card, index) => (
-          <div
-            key={index}
-            className={`absolute w-full sm:w-80 p-6 shadow-lg bg-white bg-opacity-20 rounded-lg transform transition-all duration-1000 ease-in-out ${
-              index === activeIndex ? 'opacity-100 translate-y-0 shadow-xl scale-105' : 'opacity-0 translate-y-full'
-            }`}
-            style={{
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              zIndex: cards.length - index,
-              visibility: index === activeIndex ? 'visible' : 'hidden', // Ocultar tarjetas no activas
-              maxWidth: '90%', // Ajuste del ancho máximo para dispositivos móviles
-            }}
-          >
-            <h2 className="text-2xl lg:text-3xl font-bold mb-2 text-white">{card.title}</h2>
-            <h3 className="text-lg lg:text-xl text-gray-300 mb-2">{card.subtitle}</h3>
-            <p className="text-gray-300">{card.content}</p>
-          </div>
-        ))}
+
+      {/* Columna de cartas */}
+      <div className="lg:w-1/3 lg:ml-auto relative z-10 mt-8 lg:mt-0 flex justify-center items-center">
+        <div className="bg-white p-4 rounded-lg shadow-lg transition-opacity duration-500 lg:w-5/6 md:w-3/4 w-3/4 lg:center">
+          <h3 className="text-lg font-bold mb-2">{cards[activeIndex].title}</h3>
+          <h4 className="text-sm text-gray-600 mb-2">{cards[activeIndex].subtitle}</h4>
+          <p className="text-sm text-gray-800">{cards[activeIndex].content}</p>
+        </div>
       </div>
+
       {/* Overlay para oscurecer el fondo */}
       <div className="absolute inset-0 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 opacity-50"></div>
       {/* Borde para el efecto de marco */}
       <div className="absolute inset-0 border border-gray-600 rounded-lg"></div>
-    </section>
+    </div>
   );
+  
+  
+  
 };
 
 export default Hero;
-
-
